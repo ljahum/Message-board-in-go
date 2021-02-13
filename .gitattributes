@@ -1,0 +1,2 @@
+*.cs linguist-language=golang
+*.ico linguist-language=golang
