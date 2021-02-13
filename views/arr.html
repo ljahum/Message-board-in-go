@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CV - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+        <div class="container"><a class="navbar-brand logo" href="/">Home</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"></li>
+                </ul>
+            </div><img class="round_icon" src="assets/img/avatars/avatar.jpg"></div>
+    </nav>
+    <main class="page cv-page">
+        <section class="portfolio-block cv">
+            <div class="container">
+                <div class="work-experience group">
+                    <div class="heading">
+                        <h2 class="text-center">Hello gin</h2>
+                    </div>
+                    <!-- ======================留言正文==================================== --> 
+                    {{range $index, $ele := .stuArr }}
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>{{ $ele.Name }}</h3>
+                                <h4 class="organization">{{ $ele.Mail }}</h4>
+                            </div>
+                            <div class="col-md-6"><span class="period">{{ $ele.Time }}</span></div>
+                        </div>
+                        <p class="text-muted">{{ $ele.Content }}</p>
+                    </div>
+                    {{ end }}
+<!-- ========================================================== -->
+                </div>
+                <div class="group"></div>
+                <div class="hobbies group">
+                    <div class="heading"></div>
+                </div>
+            </div>
+            <form method="dialog" id="msgform">
+                {{ $ele := .uinfo }}
+                <h2 class="text-center">Send a msg</h2>
+                <p>{{ $ele.Name }}</p>
+                <p>{{ $ele.Mail }}</p>
+                <div class="form-group"><textarea class="form-control" name="message" id= "message" placeholder="Message<128" rows="14"></textarea></div>
+                
+                <!-- <div class="alert alert-warning">
+                    <a href="#" class="close" data-dismiss="alert">
+                        &times;
+                    </a>
+                    <strong>警告！</strong>长度不得超过
+                </div> -->
+                <div class="form-group"><button class="btn btn-primary" id = "btn_add" type="submit">send </button></div>
+
+                
+            </form>
+        </section>
+    </main>
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright">Company Name © 2017</p>
+            </div>
+        </footer>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("button").click(function () {
+                var data = $("#msgform").serialize();
+                $.ajax({
+                    url: "/room",
+                    type: "post",
+                    dataType: "json",
+                    data: data,
+                    success: function (data) {
+                        if(data.check == "true"){
+                            alert(data["msg"])
+                            window.location.href = "/room";
+
+                        }else{
+                            alert(data["msg"])
+                        }
+                        
+                        // alert("123321")
+                        // }, 200);
+                    }
+
+                });
+            });
+            
+        });
+            
+        
+    </script>
+    </head>
+
+
+</body>
+
+</html>

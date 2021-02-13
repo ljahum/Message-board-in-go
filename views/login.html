@@ -1,0 +1,85 @@
+{{ define "login.html" }}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Register - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+</head>
+
+<body>
+    <main class="page registration-page"></main>
+    <div class="login-dark">
+        <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+            <div class="container"><a class="navbar-brand" href="/">Home</a><button class="navbar-toggler" data-toggle="collapse"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+        </nav>
+        <form>
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" id="Email"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="passwd"></div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" id="btn_add" type="submit">Log In</button>
+                
+            </div>
+
+            <a class="forgot" href="/regedit">no account? sign up </a>
+        </form>
+    </div>
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright">Company Name © 2017</p>
+            </div>
+        </footer>
+    </div>
+    <div></div>
+    <div></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script>
+        var btn_add = document.getElementById("btn_add");
+        btn_add.onclick = function (ev) {
+            var Email = document.getElementById("Email").value;
+            var passwd = document.getElementById("passwd").value;
+            $.ajax({
+                url: "/login",
+                type: "POST",
+                data: { "Email": Email, "passwd": passwd },
+                success: function (data) {
+                    if(data.check == "true"){
+                        alert(data["msg"]);
+                        window.location.href = "/";
+                    }else{
+                        // alert(data["msg"]);
+                        alert(data["msg"]);
+                        window.location.href = "/login";
+                    }
+                    
+                },
+                fail: function (data) {
+                    console.log(data);
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
+{{ end }}
