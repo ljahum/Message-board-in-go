@@ -13,7 +13,7 @@ var Main_domain string = "localhost"
 var DB *sql.DB
 
 func InitDB() *sql.DB {
-	db, err := sql.Open("mysql", "root:123321@tcp(127.0.0.1:3306)/database?charset=utf8")
+	db, err := sql.Open("mysql", "root:12345@tcp(127.0.0.1:3306)/database?charset=utf8")
 	if err != nil { // 连接失败
 		fmt.Printf("connect mysql fail ! [%s]", err)
 	} else { // 连接成功

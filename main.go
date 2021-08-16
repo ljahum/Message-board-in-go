@@ -1,20 +1,20 @@
 package main
 
-
 import (
 	//"GoCode/Controller"
-	"GoCode/common"
 	"GoCode/Controller"
+	"GoCode/common"
 	"fmt"
+
 	"github.com/gin-gonic/gin"
 )
 
-func main()  {
+func main() {
 	fmt.Println("hello world")
 	db := common.InitDB()
 	defer db.Close()
 
-	REngin:=gin.Default()
+	REngin := gin.Default()
 	REngin.Static("/assets", "./assets")
 	REngin.LoadHTMLGlob("views/*")
 	registRouter(REngin)
@@ -22,9 +22,9 @@ func main()  {
 	REngin.Run(":9999")
 
 }
-func registRouter(r *gin.Engine)  {
-	new(Controller.TestController).Router(r)
-	new(Controller.UserController).Router(r)
+func registRouter(r *gin.Engine) {
+	// new(Controller.TestController).Router(r)
+	// new(Controller.UserController).Router(r)
 	new(Controller.PubController).Router(r)
 
 }
