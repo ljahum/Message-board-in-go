@@ -1,3 +1,3 @@
 git add -A
 git commit -m "updates $(date)"
-git push -u  master
+git push -u  origin master
