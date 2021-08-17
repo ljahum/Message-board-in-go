@@ -4,13 +4,11 @@
 - 前端 bootstrap 
 - 后端 golang
 
-[测试dome](http://roomoflja.cn:9999/)
-
-注册后按页头的 space 进聊天室
+[测试dome](http://139.224.231.64:9999/room)
 
 感觉会出很多奇奇怪怪的问题呢。。。 : (
 
-<del>丑爆了</del>
+仅仅保留留言板功能
 
 # usage
 
@@ -26,7 +24,6 @@ go build -i -o name .
 
 配置
 
--   将database.go里面的Main_domain换成服务器域名
+-   database.go配置数据库和密码
 -   配置database.sql
-  
 
