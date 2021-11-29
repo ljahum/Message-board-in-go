@@ -166,7 +166,8 @@ wiki给出了<!-- $d<N^{0.29}$ --> <img style="transform: translateY(0.1em);filt
 
 某次比赛给出了扩展形式，本文章翻译得比较好，证明平板也比较高质量
 
-这个题把d范围扩展到了<!-- $d<N^{5\over 14}$ --> <img style="transform: translateY(0.1em);filter: invert(100%)" src="https://render.githubusercontent.com/render/math?math=d%3CN%5E%7B5%5Cover%2014%7D">
+这个题把d范围扩展到了
+<!-- $d<N^{5\over 14}$ --> <img style="transform: translateY(0.1em);filter: invert(100%)" src="https://render.githubusercontent.com/render/math?math=d%3CN%5E%7B5%5Cover%2014%7D">
 
 https://blog.csdn.net/jcbx_/article/details/109306542
 
